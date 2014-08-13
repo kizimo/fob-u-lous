@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="barcodescanner.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery-barcode-2.0.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="fobulous_droid_lite.js"></script>
+    <script type="text/javascript" charset="utf-8" src="fobulous_app.js"></script>
+    <link rel="stylesheet" href="jquery.mobile-1.0.1.min.css" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="jquery.mobile-1.0.1.min.js"></script>
+
+
+    <style type="text/css">
+	.ui-page {
+        background: #a51ecd url("images/bg_2x.png") top left no-repeat;
+        -webkit-backface-visibility: hidden;
+
+    }
+    body {
+        background: #a51ecd url("images/bg_2x.png") top left no-repeat;
+        -webkit-backface-visibility: hidden;
+    }
+    .ui-content {
+    	color: #ffcc00;
+    	font-size: 16px;
+    	font-stretch: normal;
+    	text-shadow: none;
+    	
+    	
+    }
+    #verbage {
+    	margin-left:10px;
+    	margin-right:10px;
+    }
+        .count {
+            top:20px;
+            font-size: 15px;
+            font-weight: bold;
+            padding:.2em .5em;
+            color: white;
+            background: none;
+            background-color: red;
+            border: 1px solid black;
+            text-shadow:none;
+        }
+    </style>
+
+    <title>fobulous</title>
+</head>
+
+<body onload="onBodyLoad()">
+    <div id="main" data-role="page" data-theme="e">
+        <div data-role="header">
+            <a id="addButton" href="#scan" data-icon="add" data-theme="e" data-transition="slideup">Add</a>
+			<!-- a id="optionsButton" href="scan.html" data-icon="add" target="_self"  data-transition="fade">Options</a -->
+            <center>
+                <img src="images/fobulous_logo_sm.png">
+            </center>
+        </div><!-- /header -->
+
+        <div data-role="content">
+        	<div id="verbage">
+        		<center><img src="images/key.png" alt="ajax-loader" width="88" height="100" style="float:left;margin:1px;"><b>fobulous</b> helps you keep up with store scan cards.  Add a card by tapping the add button in the top left.</center>
+        	</div><br><br>
+            <ul data-role="listview" data-inset="true" data-filter="true" id="bcList">
+                <center>No codes available.</center>
+            </ul><br>
+        </div><!-- /content -->
+    </div><!-- /page -->
+    
+    <div id="barcode" data-role="page">
+        <div data-role="header" data-add-back-btn="true">
+			<a href="#main" data-rel="back" data-icon="back" data-transition="slide">Back</a> 
+			<a id="deleteButton" href="#" data-icon="delete" data-theme="e" data-transition="fade">Delete</a> 
+            <center>
+                <img src="images/fobulous_logo_sm.png">
+                    </center>
+        </div><!-- /header -->
+        
+        <div data-role="content">
+            <center>
+            	<span id="bcName"></span><span id="bcFormat"></span><br><br>
+                <div id="bcTarget"></div>
+                <span id="container"></span>
+            </center>
+        </div><!-- /content -->
+    </div>
+    
+    <div id="scan" data-role="page" data-theme="e">
+        <div data-role="header" data-position="inline">
+            <a href="#main" data-icon="delete" data-transition="slidedown">Cancel</a> 
+            <a href="#" data-icon="check" data-theme="e" id="save-button" data-transition="slidedown">Save</a>
+            
+            <center>
+                <img src="images/fobulous_logo_sm.png">
+                    </center>
+        </div><!-- /header -->
+        
+        <div data-role="content">
+             		<h4><span id="itemCount" class="count ui-btn-up-c ui-btn-corner-all">1</span> Scan your card or key fob.<br/>
+             		<button data-role="button" data-icon="gear" id="scan-button">Scan</button><br/>
+                     <span id="bcDataInputDup"></span></h4>
+                	<h4><span id="itemCount" class="count ui-btn-up-c ui-btn-corner-all">2</span> Name your card.</h4>
+                	<input data-theme="d" type="text" id="bcNameInput" name="bcNameInput" value="" /><br>
+                    <h4><span id="itemCount" class="count ui-btn-up-c ui-btn-corner-all">3</span> Click save.</h4>
+                    <input data-theme="d" type="hidden" id="bcDataInput" name="bcDataInput" value=""/>
+            <script type="text/javascript">
+                
+                $("#scan-button").click(function() {
+                                        scanFob();
+                                        });
+                $("#save-button").click(function() {
+                                        insertData($('#bcNameInput').val());
+                                        });
+                </script>
+        </div><!-- /content -->
+    </div>
+</body>
+</html>

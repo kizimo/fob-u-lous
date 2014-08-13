@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="values-sk/|values-bg/|raw/|drawable-mdpi/|values-es/|drawable-hdpi/|layout-land/|values-zh-rTW/|values-ja-rJP/|values-hu/|values-pl/|values-da/|values-ar/|values-kr/|drawable/|values-it/|values/|values-sl/|values-he/|values-pt/|values-sv/|drawable-ldpi/|layout/|values-fr/|values-fi/|layout-ldpi/|values-cs/|values-nl/|values-ru/|values-de/|values-tr/|values-zh-rCN/|xml/" kind="src" path="res"/>
+	<classpathentry kind="src" path="res/drawable-mdpi"/>
+	<classpathentry kind="src" path="res/drawable-hdpi"/>
+	<classpathentry kind="src" path="res/drawable"/>
+	<classpathentry kind="src" path="res/drawable-ldpi"/>
+	<classpathentry kind="src" path="res/xml"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="libs/cordova-1.5.0.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
